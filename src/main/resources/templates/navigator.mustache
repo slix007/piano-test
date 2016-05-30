@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Full Stack Live Coding Exercise</title>
+    <link rel="stylesheet" href="../shared/css/base.css" />
+</head>
+<body>
+<h1>Full Stack Live Coding Exercise</h1>
+<div id="container">
+    <p>
+        <div id="template-table">
+            <table>
+                <thead>
+                <th>date of the question</th>
+                <th>title</th>
+                <th>who posted it</th>
+                </thead>
+                <tbody>
+                <!--{{#items}}-->
+                <tr>
+                    <td>{{creation_date}}</td>
+                    <td>{{title}}</td>
+                    <td>{{owner.display_name}}</td>
+                    <td><a href="{{link}}">link</a></td>
+                </tr>
+                <!--{{/items}}-->
+                </tbody>
+            </table>
+        </div>
+    </p>
+</div>
+
+</body>
+</html>
+
+
+

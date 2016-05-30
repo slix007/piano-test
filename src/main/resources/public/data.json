@@ -1,0 +1,132 @@
+{
+  "items": [
+    {
+      "tags": [
+        "java",
+        "tomcat",
+        "windows-8"
+      ],
+      "owner": {
+        "reputation": 1061,
+        "user_id": 909813,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/f1983d2b6455df93387e95c83a062bb5?s=128&d=identicon&r=PG",
+        "display_name": "AbdelHameed Mahmoud",
+        "link": "http://stackoverflow.com/users/909813/abdelhameed-mahmoud"
+      },
+      "is_answered": false,
+      "view_count": 1699,
+      "answer_count": 1,
+      "score": 3,
+      "last_activity_date": 1464419104,
+      "creation_date": 1362144796,
+      "question_id": 15159024,
+      "link": "http://stackoverflow.com/questions/15159024/javatm-platform-se-binary-has-stopped-working-error-with-tomcat-server",
+      "title": "&quot;Java(TM) Platform SE binary has stopped working&quot; error with Tomcat server"
+    },
+    {
+      "tags": [
+        "java",
+        "hyper-v"
+      ],
+      "owner": {
+        "reputation": 6,
+        "user_id": 5433858,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/bc9859329429dc82e31f8605095279bd?s=128&d=identicon&r=PG&f=1",
+        "display_name": "aliszja",
+        "link": "http://stackoverflow.com/users/5433858/aliszja"
+      },
+      "is_answered": false,
+      "view_count": 50,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1464418359,
+      "creation_date": 1446707105,
+      "question_id": 33538475,
+      "link": "http://stackoverflow.com/questions/33538475/java-accessing-hyper-v-programaticaly",
+      "title": "Java accessing hyper-v programaticaly"
+    },
+    {
+      "tags": [
+        "java",
+        "groovy",
+        "groovyshell"
+      ],
+      "owner": {
+        "reputation": 915,
+        "user_id": 193418,
+        "user_type": "registered",
+        "accept_rate": 49,
+        "profile_image": "https://www.gravatar.com/avatar/820b2b762bae0ab6367080155d44bae3?s=128&d=identicon&r=PG",
+        "display_name": "voodoogiant",
+        "link": "http://stackoverflow.com/users/193418/voodoogiant"
+      },
+      "is_answered": false,
+      "view_count": 39,
+      "answer_count": 2,
+      "score": 2,
+      "last_activity_date": 1464415602,
+      "creation_date": 1464186580,
+      "last_edit_date": 1464321165,
+      "question_id": 37440193,
+      "link": "http://stackoverflow.com/questions/37440193/passing-a-groovy-object-to-a-java-method",
+      "title": "Passing a groovy object to a Java method"
+    },
+    {
+      "tags": [
+        "java"
+      ],
+      "owner": {
+        "reputation": 332,
+        "user_id": 658168,
+        "user_type": "registered",
+        "accept_rate": 0,
+        "profile_image": "https://www.gravatar.com/avatar/3538372892e1733c1168558cc31eb8e9?s=128&d=identicon&r=PG",
+        "display_name": "user658168",
+        "link": "http://stackoverflow.com/users/658168/user658168"
+      },
+      "is_answered": true,
+      "view_count": 54221,
+      "protected_date": 1422938256,
+      "answer_count": 3,
+      "score": 15,
+      "last_activity_date": 1464413393,
+      "creation_date": 1306546051,
+      "last_edit_date": 1423798312,
+      "question_id": 6159118,
+      "link": "http://stackoverflow.com/questions/6159118/using-java-to-pull-data-from-a-webpage",
+      "title": "Using Java to pull data from a webpage?"
+    },
+    {
+      "tags": [
+        "java",
+        "linux",
+        "ubuntu",
+        "gitlab",
+        "gitlab-ci"
+      ],
+      "owner": {
+        "reputation": 333,
+        "user_id": 875976,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/5bda3f3f65bb5d4580979e2ec0bfde81?s=128&d=identicon&r=PG",
+        "display_name": "Jalpesh",
+        "link": "http://stackoverflow.com/users/875976/jalpesh"
+      },
+      "is_answered": false,
+      "view_count": 30,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1464411229,
+      "creation_date": 1463051229,
+      "last_edit_date": 1463132662,
+      "question_id": 37185109,
+      "link": "http://stackoverflow.com/questions/37185109/installing-java-on-online-gitlab-ci",
+      "title": "Installing Java on online Gitlab ci"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 300,
+  "quota_remaining": 276
+}
