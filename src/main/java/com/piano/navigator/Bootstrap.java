@@ -1,22 +1,17 @@
 package com.piano.navigator;
 
-import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
-import static spark.Spark.*;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Map;
-import com.google.gson.Gson;
+
+import static spark.Spark.get;
+import static spark.Spark.port;
+import static spark.Spark.staticFiles;
 
 
 /**
