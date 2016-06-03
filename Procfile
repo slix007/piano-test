@@ -1,1 +1,1 @@
-web: ./build/libs/spark-test-0.1.jar
+web: ./build/install/app/bin/app
