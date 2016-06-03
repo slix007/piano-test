@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by slix on 6/1/16.
+ * Created by Sergey on 6/1/16.
  */
 public class DtoToVoConverter {
 

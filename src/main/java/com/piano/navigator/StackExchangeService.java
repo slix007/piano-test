@@ -29,7 +29,6 @@ public class StackExchangeService {
 
     private static Logger logger = LoggerFactory.getLogger(StackExchangeService.class);
 
-
     /**
      *
      * @param tagged not null
