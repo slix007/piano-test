@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'application'
 
 applicationName = "PianoTest"
-mainClassName = "Bootstrap"
+mainClassName = "com.piano.navigator.Bootstrap"
 
 version 0.1
 
@@ -17,28 +17,21 @@ dependencies {
     compile "com.sparkjava:spark-template-mustache:2.3"
     compile "org.slf4j:slf4j-simple:1.7.21"
     compile "com.google.code.gson:gson:2.6.2"
-    //TODO map json to objects to manipulate it
-    // http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4'
-    // http://mvnrepository.com/artifact/org.projectlombok/lombok-maven
-//    compile group: 'org.projectlombok', name: 'lombok-maven', version: '1.16.8.0', ext: 'pom'
-//    compile "org.projectlombok:lombok:1.16.8"
-// http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
-
-
 
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
-//defaultTasks = ['clean']
-//task stage(dependsOn: ['clean', 'installApp'])
-
-task getHomeDir << {
-    println gradle.gradleHomeDir
+defaultTasks = ['clean', 'jar']
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.piano.navigator.Bootstrap'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } {
+        // remove all signature files
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
 }
-
-task stage {
-    dependsOn build
-}
-
+task stage(dependsOn: ['clean', 'installApp'])
