@@ -23,17 +23,27 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Created by slix on 5/30/16.
+ * Created by Sergey on 5/30/16.
  */
 public class StackExchangeService {
 
     private static Logger logger = LoggerFactory.getLogger(StackExchangeService.class);
 
-    public Map<String, Object> getJsonAsMap() throws URISyntaxException, IOException {
+
+    /**
+     *
+     * @param tagged not null
+     * @param nottagged
+     * @param intitle
+     * @return
+     * @throws URISyntaxException
+     * @throws IOException
+     */
+    public Map<String, Object> getJsonAsMap(String tagged, String nottagged, String intitle) throws URISyntaxException, IOException {
 
 //        String json = getHardcodedResponse();
-        String json = requestToExternalService();
-
+        String json = requestToExternalService(tagged, nottagged, intitle);
+        logger.info(json);
         Map<String, Object> map = DtoToVoConverter.convertResponse(json);
 
         return map;
@@ -44,11 +54,13 @@ public class StackExchangeService {
         return new String(Files.readAllBytes(Paths.get(uri)));
     }
 
-    private String requestToExternalService() throws URISyntaxException, IOException {
-//http://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=java&site=stackoverflow
+    private String requestToExternalService(String tagged, String nottagged, String intitle) throws URISyntaxException, IOException {
         URIBuilder uriBuilder = new URIBuilder("http://api.stackexchange.com/2.2/search");
         uriBuilder.addParameter("site", "stackoverflow");
-        uriBuilder.addParameter("intitle", "java");
+        if (tagged != null) uriBuilder.addParameter("tagged", tagged);
+        if (nottagged != null) uriBuilder.addParameter("nottagged", nottagged);
+        if (intitle != null) uriBuilder.addParameter("intitle", intitle);
+
         HttpGet httpGet = new HttpGet(uriBuilder.build());
 
         CloseableHttpClient httpClient = HttpClients.createDefault();

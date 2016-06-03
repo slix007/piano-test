@@ -1,13 +1,10 @@
 package com.piano.navigator;
 
+import com.piano.navigator.controllers.HomeController;
+import com.piano.navigator.controllers.SearchController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -21,22 +18,13 @@ public class Bootstrap {
 
     private static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
-    private static StackExchangeService stackExchangeService;
-
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         staticFiles.location("/public");
 
-        stackExchangeService = new StackExchangeService();
-        Map<String, Object> map = stackExchangeService.getJsonAsMap();
-
-
-        logger.error(map.toString());
-//        logger.error(json);
-
-        ModelAndView modelAndView = new ModelAndView(map, "navigator.mustache");
-
         port(getHerokuAssignedPort());
-        get("/hello", (req, res) -> modelAndView, new MustacheTemplateEngine());
+        get("/", new HomeController().index, new MustacheTemplateEngine());
+
+        get("/search-result", new SearchController().index, new MustacheTemplateEngine());
     }
 
     private static int getHerokuAssignedPort() {
