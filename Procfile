@@ -1,1 +1,1 @@
-web: ./build/install/PianoTest/bin/app
+web: ./build/install/PianoTest/bin/PianoTest
