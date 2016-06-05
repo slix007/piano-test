@@ -9,28 +9,39 @@
 
 <h1>Full Stack Live Coding Exercise.</h1>
 <p>
-    Search over <a href="http://stackoverflow.com/">Stack Overflow</a>
-    by next conditions
+    Search over Stack Exchange sites by next conditions
 </p>
 
 <div>
     <form method="GET" action="/search-result" class="form-horizontal" role="form">
         <fieldset class="form-group">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="tagged">has tag(required)</label>
+                <label class="control-label col-sm-2" for="tagged">Site(required)</label>
+                <div class="col-sm-10">
+                    <select name="site" id="site" class="selectpicker">
+                        {{#items}}
+                            <option value="{{api_site_parameter}}">{{name}}</option>
+                        {{/items}}
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="tagged">Tag(required)</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="text" name="tagged" id="tagged" required="true"
                            placeholder="Type a tag here. For example, 'java'">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="nottagged">has no tags</label>
+                <label class="control-label col-sm-2" for="nottagged">Exclude tag</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="text" name="nottagged" id="nottagged">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="intitle">has text in title</label>
+                <label class="control-label col-sm-2" for="intitle">Text in title</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="text" name="intitle" id="intitle">
                 </div>

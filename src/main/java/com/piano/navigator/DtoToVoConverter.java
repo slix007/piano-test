@@ -34,7 +34,6 @@ public class DtoToVoConverter {
                 .create().fromJson(json, Map.class);
 
         List<Map<String, Object>> itemList = (List<Map<String, Object>>)map.get(FIELD_ITEMS);
-
         for (Map<String, Object> item : itemList) {
             Double doubleVal = (Double)item.get(FIELD_CREATION_DATE);
             Long creationDate = doubleVal.longValue();
@@ -44,5 +43,12 @@ public class DtoToVoConverter {
         }
 
         return map;
+    }
+
+    public static Map<String, Object> convertSitesResponse(String json) {
+        return new GsonBuilder()
+                .setPrettyPrinting()
+                .disableHtmlEscaping()
+                .create().fromJson(json, Map.class);
     }
 }

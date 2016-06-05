@@ -19,15 +19,14 @@
             <th>Reputation</th>
             </thead>
             <tbody>
-            <!--{{#items}}-->
-            <tr {{#is_answered}}class="success"{{/is_answered}}>
-                <td>{{creation_date}}</td>
-                <td><a href="{{link}}">{{title}}</a></td>
-                <td><a href="{{owner.link}}">{{owner.display_name}}</a></td>
-                <td>{{owner.reputation}}</td>
-                <!--<td><a href="{{link}}">link</a></td>-->
-            </tr>
-                    <!--{{/items}}-->
+            {{#items}}
+                <tr {{#is_answered}}class="success"{{/is_answered}}>
+                    <td>{{creation_date}}</td>
+                    <td><a href="{{link}}">{{title}}</a></td>
+                    <td><a href="{{owner.link}}">{{owner.display_name}}</a></td>
+                    <td>{{owner.reputation}}</td>
+                </tr>
+            {{/items}}
             </tbody>
         </table>
     </div>

@@ -18,8 +18,8 @@ import java.util.Map;
 public class SearchController {
     private static Logger logger = LoggerFactory.getLogger(SearchController.class);
 
-
-    private static StackExchangeService stackExchangeService = new StackExchangeService();
+    //TODO use DI
+    private static StackExchangeService stackExchangeService = StackExchangeService.getInstance();
 
     public TemplateViewRoute index = (request, response) -> {
 
@@ -29,20 +29,20 @@ public class SearchController {
     };
 
     private Map<String, Object> getResponse(Request request) {
-        Map<String, Object> jsonAsMap = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
 
         try {
+            String site = request.queryParams("site");
+            logger.info("Site:" + site);
             String tagged = request.queryParams("tagged");
             String nottagged = request.queryParams("nottagged");
             String intitle = request.queryParams("intitle");
 
-            jsonAsMap = stackExchangeService.getJsonAsMap(tagged, nottagged, intitle);
+            map = stackExchangeService.searchForQuestions(site, tagged, nottagged, intitle);
 
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            logger.error("",e);
+        } catch (URISyntaxException | IOException e) {
+            logger.error("Unexpected exception", e);
         }
-        return jsonAsMap;
+        return map;
     }
 }
