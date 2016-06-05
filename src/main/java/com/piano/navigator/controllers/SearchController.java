@@ -25,9 +25,6 @@ public class SearchController {
 
         Map<String, Object> map = getResponse(request);
 
-
-//        logger.error(map.toString());
-
         return new ModelAndView(map, "search-result.mustache");
     };
 

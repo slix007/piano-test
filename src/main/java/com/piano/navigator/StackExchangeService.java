@@ -73,7 +73,9 @@ public class StackExchangeService {
         uriBuilder.addParameter("page", DEFAULT_PAGE);
         uriBuilder.addParameter("pagesize", DEFAULT_PAGE_SIZE);
 
-        HttpGet httpGet = new HttpGet(uriBuilder.build());
+        URI uri = uriBuilder.build();
+        logger.info("Request url: " + uri);
+        HttpGet httpGet = new HttpGet(uri);
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse httpResponse = httpClient.execute(httpGet);

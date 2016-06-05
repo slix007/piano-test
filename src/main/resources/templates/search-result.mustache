@@ -43,15 +43,15 @@
 
     <form method="GET" action="/">
         {{#has_more}}
-            <input type="button" class="btn btn-block" value="Show more..."
+            <input type="button" class="btn btn-block" value="Show more..." id="has_more"
                    onclick="requestMoreRows('{{page}}',
-            '{{pagesize}}',
-            '{{site}}',
-            '{{tagged}}',
-            '{{#nottagged}}{{/nottagged}}{{nottagged}}{{^nottagged}}null{{/nottagged}}',
-            '{{#intitle}}{{intitle}}{{/intitle}}{{^intitle}}null{{/intitle}}'
-            )
-            "/>
+                           '{{pagesize}}',
+                           '{{site}}',
+                           '{{tagged}}',
+                           '{{#nottagged}}{{/nottagged}}{{nottagged}}{{^nottagged}}null{{/nottagged}}',
+                           '{{#intitle}}{{intitle}}{{/intitle}}{{^intitle}}null{{/intitle}}'
+                           )
+                           "/>
         {{/has_more}}
 
         <button type="submit" class="btn btn-primary btn-block">Back</button>

@@ -1,7 +1,15 @@
 /**
  * Requests to StackExchange.
  */
-function requestMoreRows(page, pagesize, site, tagged, nottagged, intitle) {
+var lastPage = 0;
+
+function requestMoreRows(startWithpage, pagesize, site, tagged, nottagged, intitle) {
+
+    var page = parseInt(startWithpage) + 1;
+    if (lastPage != 0) {
+        page = parseInt(lastPage) + 1;
+    }
+    lastPage = page;
 
     //ajax call
     var v_url = "http://api.stackexchange.com/2.2/search";
@@ -12,12 +20,14 @@ function requestMoreRows(page, pagesize, site, tagged, nottagged, intitle) {
     if (tagged != null) {
         v_url += "&tagged=" + tagged;
     }
-    if (nottagged != null) {
+    if (nottagged != 'null') {
         v_url += "&nottagged=" + nottagged;
     }
-    if (intitle != null) {
+    if (intitle != 'null') {
         v_url += "&intitle=" + intitle;
     }
+
+    console.log(v_url);
 
     $.ajax({
         url: v_url,
@@ -34,6 +44,10 @@ function addrowsToTable(data) {
     data.items.forEach(function(item) {
         appendRow(item);
     });
+
+    if (!data.has_more) {
+        $('#has_more').hide();
+    }
 }
 
 function appendRow(item) {
