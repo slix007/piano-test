@@ -1,7 +1,6 @@
 package com.piano.navigator;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -28,6 +27,10 @@ import java.util.stream.Collectors;
 public class StackExchangeService {
 
     private static Logger logger = LoggerFactory.getLogger(StackExchangeService.class);
+    private final String DEFAULT_PAGE = "1";
+    private final String DEFAULT_PAGE_SIZE = "20";
+    private final String DEFAULT_SITE = "stackoverflow";
+    private final String BASE_URI = "http://api.stackexchange.com/2.2/search";
 
     /**
      *
@@ -45,8 +48,16 @@ public class StackExchangeService {
         logger.info(json);
         Map<String, Object> map = DtoToVoConverter.convertResponse(json);
 
+        // Add request info to response. To let it request more/
+        map.put("page", DEFAULT_PAGE);
+        map.put("pagesize", DEFAULT_PAGE_SIZE);
+        map.put("site", DEFAULT_SITE);
+        map.put("tagged", tagged);
+        map.put("nottagged", nottagged);
+        map.put("intitle", intitle);
         return map;
     }
+
 
     private String getHardcodedResponse() throws URISyntaxException, IOException {
         URI uri = StackExchangeService.class.getResource("/public/data.json").toURI();
@@ -54,11 +65,13 @@ public class StackExchangeService {
     }
 
     private String requestToExternalService(String tagged, String nottagged, String intitle) throws URISyntaxException, IOException {
-        URIBuilder uriBuilder = new URIBuilder("http://api.stackexchange.com/2.2/search");
-        uriBuilder.addParameter("site", "stackoverflow");
+        URIBuilder uriBuilder = new URIBuilder(BASE_URI);
+        uriBuilder.addParameter("site", DEFAULT_SITE);
         if (tagged != null) uriBuilder.addParameter("tagged", tagged);
         if (nottagged != null) uriBuilder.addParameter("nottagged", nottagged);
         if (intitle != null) uriBuilder.addParameter("intitle", intitle);
+        uriBuilder.addParameter("page", DEFAULT_PAGE);
+        uriBuilder.addParameter("pagesize", DEFAULT_PAGE_SIZE);
 
         HttpGet httpGet = new HttpGet(uriBuilder.build());
 

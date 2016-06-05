@@ -7,32 +7,31 @@
 {{/header}}
 {{$content}}
 
-
 <div id="container">
 
-        <p>
-        <div id="template-table">
-            <table class="table-bordered">
-                <thead>
-                <th>date of the question</th>
-                <th>title</th>
-                <th>who posted it</th>
-                <th>reputation</th>
-                </thead>
-                <tbody>
-                <!--{{#items}}-->
-                <tr>
-                    <td>{{creation_date}}</td>
-                    <td>{{title}}</td>
-                    <td>{{owner.display_name}}</td>
-                    <td>{{owner.reputation}}</td>
-                    <td><a href="{{link}}">link</a></td>
-                </tr>
-                <!--{{/items}}-->
-                </tbody>
-            </table>
-        </div>
-        </p>
+    <p>
+    <div id="template-table">
+        <table class="table table-hover table-condensed" id="result-table">
+            <thead class="thead-inverse">
+            <th>Date of the question</th>
+            <th>Title</th>
+            <th>Who posted it</th>
+            <th>Reputation</th>
+            </thead>
+            <tbody>
+            <!--{{#items}}-->
+            <tr {{#is_answered}}class="success"{{/is_answered}}>
+                <td>{{creation_date}}</td>
+                <td><a href="{{link}}">{{title}}</a></td>
+                <td><a href="{{owner.link}}">{{owner.display_name}}</a></td>
+                <td>{{owner.reputation}}</td>
+                <!--<td><a href="{{link}}">link</a></td>-->
+            </tr>
+                    <!--{{/items}}-->
+            </tbody>
+        </table>
+    </div>
+    </p>
 
     {{^items}}
         <div class="panel panel-default">
@@ -43,9 +42,19 @@
     {{/items}}
 
     <form method="GET" action="/">
+        {{#has_more}}
+            <input type="button" class="btn btn-block" value="Show more..."
+                   onclick="requestMoreRows('{{page}}',
+            '{{pagesize}}',
+            '{{site}}',
+            '{{tagged}}',
+            '{{#nottagged}}{{/nottagged}}{{nottagged}}{{^nottagged}}null{{/nottagged}}',
+            '{{#intitle}}{{intitle}}{{/intitle}}{{^intitle}}null{{/intitle}}'
+            )
+            "/>
+        {{/has_more}}
 
-    <button type="submit" class="btn btn-primary btn-block">Back
-    </button>
+        <button type="submit" class="btn btn-primary btn-block">Back</button>
     </form>
 </div>
 
